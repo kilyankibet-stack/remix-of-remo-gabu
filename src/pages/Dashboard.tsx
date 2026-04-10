@@ -80,9 +80,10 @@ const Dashboard = () => {
   }, []);
 
   const w = allWithdrawals[currentWithdrawal];
+  const isCompleted = (taskId: string) => completedSurveys.includes(taskId);
   const canAccessSurvey = (taskId: string) => {
+    if (isCompleted(taskId)) return false;
     if (accountType !== 'free') return true;
-    // Free users: only data-cat if they haven't completed any survey yet
     if (completedSurveys.length === 0 && taskId === 'data-cat') return true;
     return false;
   };
