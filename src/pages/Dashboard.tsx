@@ -200,8 +200,9 @@ const Dashboard = () => {
   );
 };
 
-const TaskCard = ({ task, canAccess, onUpgrade }: { task: typeof taskCategories[0]; canAccess: boolean; onUpgrade: () => void }) => {
+const TaskCard = ({ task, canAccess, completed, onUpgrade }: { task: typeof taskCategories[0]; canAccess: boolean; completed: boolean; onUpgrade: () => void }) => {
   const handleClick = () => {
+    if (completed) return;
     if (canAccess) {
       window.location.href = `/survey/${task.id}`;
     } else {
@@ -216,13 +217,16 @@ const TaskCard = ({ task, canAccess, onUpgrade }: { task: typeof taskCategories[
       <p className="text-success text-[10px] font-semibold mt-1.5">{task.pay}</p>
       <button
         onClick={handleClick}
+        disabled={completed}
         className={`w-full mt-2 py-1.5 rounded-lg text-[10px] font-semibold ${
-          canAccess
-            ? 'gradient-success text-success-foreground'
-            : 'bg-secondary text-muted-foreground'
+          completed
+            ? 'bg-success/20 text-success'
+            : canAccess
+              ? 'gradient-success text-success-foreground'
+              : 'bg-secondary text-muted-foreground'
         }`}
       >
-        {canAccess ? 'Start Earning →' : '🔒 Upgrade'}
+        {completed ? '✓ Completed' : canAccess ? 'Start Earning →' : '🔒 Upgrade'}
       </button>
     </div>
   );
