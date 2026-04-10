@@ -187,7 +187,7 @@ const Dashboard = () => {
         </div>
         <div className="grid grid-cols-2 gap-2">
           {taskCategories.map((task) => (
-            <TaskCard key={task.id} task={task} canAccess={canAccessSurvey(task.id)} onUpgrade={() => setShowPlans(true)} />
+            <TaskCard key={task.id} task={task} canAccess={canAccessSurvey(task.id)} completed={isCompleted(task.id)} onUpgrade={() => setShowPlans(true)} />
           ))}
         </div>
       </div>
