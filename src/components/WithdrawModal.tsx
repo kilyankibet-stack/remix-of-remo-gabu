@@ -15,7 +15,7 @@ const WithdrawModal = ({ onClose, onUpgrade }: { onClose: () => void; onUpgrade:
   const { balance, accountType, setWithdrawalDetails } = useUserStore();
   const [step, setStep] = useState<'method' | 'details' | 'blocked'>('method');
   const [method, setMethod] = useState('');
-
+  const [amount, setAmount] = useState('');
   const [mpesaName, setMpesaName] = useState('');
   const [mpesaPhone, setMpesaPhone] = useState('');
   const [bankName, setBankName] = useState('');
