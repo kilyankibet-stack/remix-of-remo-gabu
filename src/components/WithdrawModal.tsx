@@ -40,7 +40,13 @@ const WithdrawModal = ({ onClose, onUpgrade }: { onClose: () => void; onUpgrade:
     return '';
   };
 
+  const isAmountValid = () => {
+    const num = parseFloat(amount);
+    return num > 0 && num <= balance;
+  };
+
   const isFormValid = () => {
+    if (!isAmountValid()) return false;
     if (method === 'mpesa') return mpesaName.trim() && mpesaPhone.trim();
     if (method === 'bank') return bankName.trim() && bankAccount.trim() && bankHolder.trim();
     if (method === 'crypto') return cryptoCoin && cryptoNetwork && cryptoAddress.trim();
