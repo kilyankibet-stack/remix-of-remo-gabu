@@ -223,7 +223,7 @@ const TaskCard = ({ task, canAccess, completed, onUpgrade }: { task: typeof task
             ? 'bg-success/20 text-success'
             : canAccess
               ? 'gradient-success text-success-foreground'
-              : 'gradient-primary text-primary-foreground'
+              : 'bg-primary/20 text-primary font-semibold'
         }`}
       >
         {completed ? '✓ Completed' : canAccess ? 'Start Earning →' : '🔒 Upgrade'}
