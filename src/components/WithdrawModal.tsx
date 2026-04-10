@@ -94,6 +94,29 @@ const WithdrawModal = ({ onClose, onUpgrade }: { onClose: () => void; onUpgrade:
           <>
             <button onClick={() => setStep('method')} className="text-primary text-xs mb-3 flex items-center gap-1">← Back</button>
 
+            <div className="mb-3">
+              <label className="text-muted-foreground text-[11px] mb-1 block">Withdrawal Amount</label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground text-xs font-semibold">$</span>
+                <input
+                  type="number"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  placeholder="0.00"
+                  min="0"
+                  max={balance}
+                  step="0.01"
+                  className="w-full bg-secondary border border-border rounded-xl pl-7 pr-3 py-2.5 text-foreground placeholder:text-muted-foreground text-xs focus:outline-none focus:ring-2 focus:ring-success/50"
+                />
+              </div>
+              <p className="text-muted-foreground text-[10px] mt-1">Available: <span className="text-success font-semibold">${balance.toFixed(2)}</span></p>
+              {amount && !isAmountValid() && (
+                <p className="text-destructive text-[10px] mt-0.5">
+                  {parseFloat(amount) > balance ? 'Insufficient balance' : 'Enter a valid amount'}
+                </p>
+              )}
+            </div>
+
             {method === 'mpesa' && (
               <div className="space-y-3">
                 <div className="bg-success/10 rounded-xl p-2.5 border border-success/20 flex items-center gap-2">
