@@ -201,10 +201,11 @@ const Dashboard = () => {
 };
 
 const TaskCard = ({ task, canAccess, completed, onUpgrade }: { task: typeof taskCategories[0]; canAccess: boolean; completed: boolean; onUpgrade: () => void }) => {
+  const navigate = useNavigate();
   const handleClick = () => {
     if (completed) return;
     if (canAccess) {
-      window.location.href = `/survey/${task.id}`;
+      navigate(`/survey/${task.id}`);
     } else {
       onUpgrade();
     }
