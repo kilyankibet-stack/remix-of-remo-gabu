@@ -80,9 +80,10 @@ const Dashboard = () => {
   }, []);
 
   const w = allWithdrawals[currentWithdrawal];
+  const isCompleted = (taskId: string) => completedSurveys.includes(taskId);
   const canAccessSurvey = (taskId: string) => {
+    if (isCompleted(taskId)) return false;
     if (accountType !== 'free') return true;
-    // Free users: only data-cat if they haven't completed any survey yet
     if (completedSurveys.length === 0 && taskId === 'data-cat') return true;
     return false;
   };
@@ -186,7 +187,7 @@ const Dashboard = () => {
         </div>
         <div className="grid grid-cols-2 gap-2">
           {taskCategories.map((task) => (
-            <TaskCard key={task.id} task={task} canAccess={canAccessSurvey(task.id)} onUpgrade={() => setShowPlans(true)} />
+            <TaskCard key={task.id} task={task} canAccess={canAccessSurvey(task.id)} completed={isCompleted(task.id)} onUpgrade={() => setShowPlans(true)} />
           ))}
         </div>
       </div>
@@ -199,8 +200,9 @@ const Dashboard = () => {
   );
 };
 
-const TaskCard = ({ task, canAccess, onUpgrade }: { task: typeof taskCategories[0]; canAccess: boolean; onUpgrade: () => void }) => {
+const TaskCard = ({ task, canAccess, completed, onUpgrade }: { task: typeof taskCategories[0]; canAccess: boolean; completed: boolean; onUpgrade: () => void }) => {
   const handleClick = () => {
+    if (completed) return;
     if (canAccess) {
       window.location.href = `/survey/${task.id}`;
     } else {
@@ -215,13 +217,16 @@ const TaskCard = ({ task, canAccess, onUpgrade }: { task: typeof taskCategories[
       <p className="text-success text-[10px] font-semibold mt-1.5">{task.pay}</p>
       <button
         onClick={handleClick}
+        disabled={completed}
         className={`w-full mt-2 py-1.5 rounded-lg text-[10px] font-semibold ${
-          canAccess
-            ? 'gradient-success text-success-foreground'
-            : 'bg-secondary text-muted-foreground'
+          completed
+            ? 'bg-success/20 text-success'
+            : canAccess
+              ? 'gradient-success text-success-foreground'
+              : 'bg-secondary text-muted-foreground'
         }`}
       >
-        {canAccess ? 'Start Earning →' : '🔒 Upgrade'}
+        {completed ? '✓ Completed' : canAccess ? 'Start Earning →' : '🔒 Upgrade'}
       </button>
     </div>
   );
