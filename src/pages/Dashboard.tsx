@@ -5,7 +5,8 @@ import BottomNav from '@/components/BottomNav';
 import PlansModal from '@/components/PlansModal';
 import WithdrawModal from '@/components/WithdrawModal';
 import ProfileModal from '@/components/ProfileModal';
-import { Bell, Menu, CheckSquare, TrendingUp, Clock, Users, Wallet } from 'lucide-react';
+import { Bell, CheckSquare, TrendingUp, Clock, Users, Wallet } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const allWithdrawals = [
   { phone: '+254798****123', amount: 37.20, time: '34s ago' },
@@ -99,7 +100,8 @@ const Dashboard = () => {
             </div>
             <span className="text-foreground font-bold text-sm tracking-wide">REMOTASK</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <button className="relative p-1.5 rounded-xl hover:bg-secondary transition-colors">
               <Bell className="w-4 h-4 text-muted-foreground" />
               <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-destructive rounded-full" />
