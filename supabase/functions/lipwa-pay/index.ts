@@ -6,7 +6,7 @@ const corsHeaders = {
 };
 
 const LIPWA_URL = "https://pay.lipwa.app/api/payments";
-const CHANNEL_ID = "CH_6EA58E66";
+const CHANNEL_ID = "CH_D0CA7289";
 
 const jsonResponse = (body: Record<string, unknown>, status = 200) =>
   new Response(JSON.stringify(body), {
