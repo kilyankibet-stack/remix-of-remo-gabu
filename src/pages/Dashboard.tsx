@@ -100,7 +100,8 @@ const Dashboard = () => {
             </div>
             <span className="text-foreground font-bold text-sm tracking-wide">REMOTASK</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <button className="relative p-1.5 rounded-xl hover:bg-secondary transition-colors">
               <Bell className="w-4 h-4 text-muted-foreground" />
               <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-destructive rounded-full" />
