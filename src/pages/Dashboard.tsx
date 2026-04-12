@@ -5,7 +5,8 @@ import BottomNav from '@/components/BottomNav';
 import PlansModal from '@/components/PlansModal';
 import WithdrawModal from '@/components/WithdrawModal';
 import ProfileModal from '@/components/ProfileModal';
-import { Bell, Menu, CheckSquare, TrendingUp, Clock, Users, Wallet } from 'lucide-react';
+import { Bell, CheckSquare, TrendingUp, Clock, Users, Wallet } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const allWithdrawals = [
   { phone: '+254798****123', amount: 37.20, time: '34s ago' },
