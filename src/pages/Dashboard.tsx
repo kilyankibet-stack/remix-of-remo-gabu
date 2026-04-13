@@ -122,15 +122,15 @@ const Dashboard = () => {
         </div>
 
         {/* Balance Card */}
-        <div className="glass rounded-2xl p-5 border border-border/50 mb-4 shimmer">
+        <div className="glass rounded-2xl p-3.5 border border-border/50 mb-3 shimmer">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-muted-foreground text-[11px] flex items-center gap-1.5">
-                <Wallet className="w-3.5 h-3.5" /> Available Balance
+              <p className="text-muted-foreground text-[10px] flex items-center gap-1">
+                <Wallet className="w-3 h-3" /> Available Balance
               </p>
-              <p className="text-3xl font-black gradient-text-success mt-1">${balance.toFixed(2)}</p>
+              <p className="text-2xl font-black gradient-text-success mt-0.5">${balance.toFixed(2)}</p>
             </div>
-            <button onClick={() => setShowWithdraw(true)} className="gradient-success text-success-foreground px-5 py-2.5 rounded-xl font-semibold text-xs flex items-center gap-1.5 shadow-lg glow-success transition-transform active:scale-95">
+            <button onClick={() => setShowWithdraw(true)} className="gradient-success text-success-foreground px-4 py-2 rounded-xl font-semibold text-[11px] flex items-center gap-1.5 shadow-lg glow-success transition-transform active:scale-95">
               💸 Withdraw
             </button>
           </div>
