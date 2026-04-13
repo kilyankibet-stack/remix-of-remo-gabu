@@ -38,7 +38,12 @@ const Landing = () => {
         {/* Terms */}
         <label className="flex items-center gap-3 w-full glass rounded-xl p-4 mt-4 border border-border/50 cursor-pointer">
           <input type="checkbox" className="w-5 h-5 rounded accent-primary" defaultChecked />
-          <span className="text-sm text-muted-foreground">I agree to the Terms & Conditions and Privacy Policy</span>
+          <span className="text-sm text-muted-foreground">
+            I agree to the{' '}
+            <span onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} className="text-accent-foreground underline cursor-pointer">Terms of Service</span>
+            {' '}and{' '}
+            <span onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} className="text-accent-foreground underline cursor-pointer">Privacy Policy</span>
+          </span>
         </label>
 
         {/* Buttons */}
