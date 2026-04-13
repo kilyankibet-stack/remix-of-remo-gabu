@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Survey from "./pages/Survey";
 import Earnings from "./pages/Earnings";
 import Help from "./pages/Help";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
